@@ -34,7 +34,7 @@ const ProductDetails = () => {
                   alt={productDetails?.title}
                   className="h-auto w-full rounded-lg object-cover"
                 />
-                <div className="mt-4 flex space-x-2">
+                <div className="mt-4 flex flex-wrap space-x-2">
                   {productDetails?.images.map((image, index) => (
                     <img
                       key={index}
@@ -88,7 +88,7 @@ const ProductDetails = () => {
                 <button className="btn btn-warning mr-2 rounded-lg px-4 py-2 text-white">
                   Add to Cart
                 </button>
-                <button className="rounded-lg bg-orange-500 px-4 py-2 text-white hover:bg-orange-600">
+                <button className="btn rounded-lg bg-orange-500 px-4 py-2 text-white hover:bg-orange-600">
                   Buy Now
                 </button>
               </div>

@@ -31,7 +31,7 @@ const Home = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className="relative top-[-3rem] z-10 px-5 lg:top-[-10rem]">
+          <div className="relative top-[-3rem] z-30 px-5 lg:top-[-10rem]">
             <Products />
           </div>
         </div>

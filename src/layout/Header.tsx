@@ -7,10 +7,12 @@ import { FaUser } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import { MdNavigateNext } from "react-icons/md";
 import { CiGlobe } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { alertModal } from "../utils";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
   const items = [
     {
       name: "All",
@@ -18,11 +20,11 @@ const Header = () => {
     },
     {
       name: "Today's Deals",
-      path: "#",
+      path: "/amazon-clone/todays-deals",
     },
     {
       name: "Customer Service",
-      path: "#",
+      path: "/amazon-clone/customer-service",
     },
     {
       name: "Registry",
@@ -38,6 +40,14 @@ const Header = () => {
     },
   ];
 
+  const handleNavigate = (path: string) => {
+    if (path === "#") {
+      alertModal();
+    } else {
+      navigate(path);
+    }
+  };
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -51,6 +61,23 @@ const Header = () => {
 
   return (
     <header className="w-full text-white">
+      {/* Modal  */}
+      <dialog id="my_modal_5" className="modal modal-middle text-black">
+        <div className="modal-box">
+          <h3 className="text-lg font-bold">Hello, this is Cezaru!</h3>
+          <p className="py-4">
+            It looks like you've come across a feature that's still in the
+            works. 🚧 We're hard at work to bring this to you soon. Thanks for
+            your patience and stay tuned for updates!
+          </p>
+          <div className="modal-action">
+            <form method="dialog">
+              <button className="btn btn-primary">Got it!</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+
       <div className="flex items-center justify-between gap-8 bg-darkSecondary px-4 py-2 lg:justify-center">
         <Link to="/amazon-clone">
           <div className="w-24 border border-transparent p-2 hover:border-white">
@@ -62,7 +89,10 @@ const Header = () => {
           </div>
         </Link>
 
-        <div className="hidden cursor-pointer items-center border border-transparent hover:border-white lg:flex">
+        <div
+          onClick={alertModal}
+          className="hidden cursor-pointer items-center border border-transparent hover:border-white lg:flex"
+        >
           <IoLocationOutline size={20} />
           <p className="text-sm">
             Deliver to <br />
@@ -165,7 +195,10 @@ const Header = () => {
           </ul>
         </div>
 
-        <div className="hidden cursor-pointer whitespace-nowrap border border-transparent hover:border-white lg:block">
+        <div
+          onClick={alertModal}
+          className="hidden cursor-pointer whitespace-nowrap border border-transparent hover:border-white lg:block"
+        >
           <p className="text-xs">
             Returns <br />
           </p>
@@ -186,7 +219,7 @@ const Header = () => {
       </div>
 
       <div className="flex h-12 items-center justify-between bg-darkPrimary px-4 py-4">
-        <ul className="hidden items-center font-semibold lg:flex">
+        <ul className="hidden items-center text-sm font-semibold lg:flex">
           {items.map((item, i) => (
             <li
               key={i}
@@ -198,7 +231,7 @@ const Header = () => {
                   All
                 </a>
               ) : (
-                <div>{item.name}</div>
+                <a onClick={() => handleNavigate(item.path)}>{item.name}</a>
               )}
             </li>
           ))}
@@ -210,8 +243,10 @@ const Header = () => {
           <IoMenu size={20} />
           All
         </a>
+
         <a
           href="#"
+          onClick={alertModal}
           className="lg:text-md border border-transparent p-2 text-sm font-semibold hover:border-white"
         >
           Get free shipping to Philippines
@@ -244,8 +279,14 @@ const Header = () => {
           </span>
         </div>
         {navLinks.map((link, index) => (
-          <li key={index} className="border-b border-gray-300 py-8">
-            <span className="px-8 text-lg font-bold">{link.label}</span>
+          <li
+            key={index}
+            onClick={alertModal}
+            className="border-b border-gray-300 py-8"
+          >
+            <span className="px-8 text-sm font-bold lg:text-lg">
+              {link.label}
+            </span>
             <ul className="overflow-y-auto">
               {link.links.map((sublink, subIndex) => (
                 <li
