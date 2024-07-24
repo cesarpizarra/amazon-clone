@@ -71,7 +71,7 @@ const Products = () => {
             FREE Shipping to Philippines
           </h1>
           <img
-            src="../../../public/images/image1.jpg"
+            src="/amazon-clone/images/image1.jpg"
             alt=""
             className="object-cover"
           />
@@ -108,7 +108,7 @@ const Products = () => {
 
         <div className="flex flex-col bg-white p-4">
           <h1 className="text-sm font-bold md:text-lg">Deals in PCs</h1>
-          <img src="../../../public/images/image2.jpg" alt="" className="" />
+          <img src="/amazon-clone/images/image2.jpg" alt="" className="" />
           <div className="mt-auto w-full cursor-pointer text-sm font-semibold text-[#007185] hover:text-orange-500">
             Learn More
           </div>
@@ -133,7 +133,7 @@ const Products = () => {
 
         <div className="flex flex-col bg-white p-4">
           <h1 className="text-sm font-bold md:text-lg">Toys under $25</h1>
-          <img src="../../../public/images/image3.jpg" alt="" className="" />
+          <img src="/amazon-clone/images/image3.jpg" alt="" className="" />
           <div className="mt-auto w-full cursor-pointer text-sm font-semibold text-[#007185] hover:text-orange-500">
             Shop Now
           </div>
@@ -141,7 +141,7 @@ const Products = () => {
 
         <div className="flex flex-col bg-white p-4">
           <h1 className="text-sm font-bold md:text-lg">Home décor under $50</h1>
-          <img src="../../../public/images/image4.jpg" alt="" className="" />
+          <img src="/amazon-clone/images/image4.jpg" alt="" className="" />
           <div className="mt-auto w-full cursor-pointer text-sm font-semibold text-[#007185] hover:text-orange-500">
             Shop Now
           </div>

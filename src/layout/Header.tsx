@@ -54,7 +54,11 @@ const Header = () => {
       <div className="flex items-center justify-between gap-8 bg-darkSecondary px-4 py-2 lg:justify-center">
         <Link to="/">
           <div className="w-24 border border-transparent p-2 hover:border-white">
-            <img src="/logo2.png" alt="Logo" className="w-full object-cover" />
+            <img
+              src="/amazon-clone/logo2.png"
+              alt="Logo"
+              className="w-full object-cover"
+            />
           </div>
         </Link>
 
@@ -108,7 +112,11 @@ const Header = () => {
             className="btn border-none bg-transparent text-white hover:bg-transparent"
           >
             <div className="flex items-center gap-2">
-              <img src="/en.png" alt="EN" className="h-8 w-16 object-cover" />
+              <img
+                src="/amazon-clone/en.png"
+                alt="EN"
+                className="h-8 w-16 object-cover"
+              />
               <p>EN</p>
               <span>
                 {" "}
@@ -264,7 +272,8 @@ const Header = () => {
               <CiGlobe size={20} /> English
             </li>
             <li className="flex cursor-pointer items-center gap-2 px-8 py-4 font-sans text-sm font-semibold text-gray-500 hover:bg-gray-100">
-              <img src="/en.png" alt="En" className="w-5" /> United States
+              <img src="/amazon-clone/en.png" alt="En" className="w-5" /> United
+              States
             </li>
             <li className="cursor-pointer px-8 py-4 font-sans text-sm font-semibold text-gray-500 hover:bg-gray-100">
               Customer Service

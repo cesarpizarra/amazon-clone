@@ -7,11 +7,10 @@ import Products from "../components/sections/Products";
 
 const Home = () => {
   const carouselItems = [
-    "/home-bg.jpg",
-    "/home-bg-2.jpg",
-    "/home-bg-3.jpg",
-    "/home-bg-4.jpg",
-    "/home-bg-5.jpg",
+    "/amazon-clone/home-bg.jpg",
+    "/amazon-clone/home-bg-2.jpg",
+    "/amazon-clone/home-bg-3.jpg",
+    "/amazon-clone/home-bg-4.jpg",
   ];
   return (
     <Layout>

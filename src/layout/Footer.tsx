@@ -29,7 +29,7 @@ const Footer = () => {
       </div>
       <footer className="footer items-center justify-center border-t border-gray-600 bg-footerBg px-10 pb-12 pt-4 text-white lg:flex">
         <div className="mx-auto lg:mx-0">
-          <img src="/logo2.png" alt="logo2" className="w-20" />
+          <img src="/amazon-clone/logo2.png" alt="logo2" className="w-20" />
         </div>
         <div className="ml-0 items-center lg:ml-8 lg:flex">
           <div className="dropdown dropdown-top dropdown-hover hidden lg:block">
@@ -72,7 +72,8 @@ const Footer = () => {
             $ USD - US. Dollar
           </button>
           <button className="btn border-2 border-gray-500 bg-transparent px-4 py-px text-white hover:border-gray-500 hover:bg-transparent">
-            <img src="/en.png" alt="" className="w-5" /> United States
+            <img src="/amazon-clone/en.png" alt="" className="w-5" /> United
+            States
           </button>
         </div>
       </footer>
