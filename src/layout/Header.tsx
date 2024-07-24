@@ -52,7 +52,7 @@ const Header = () => {
   return (
     <header className="w-full text-white">
       <div className="flex items-center justify-between gap-8 bg-darkSecondary px-4 py-2 lg:justify-center">
-        <Link to="/">
+        <Link to="/amazon-clone">
           <div className="w-24 border border-transparent p-2 hover:border-white">
             <img
               src="/amazon-clone/logo2.png"
@@ -172,7 +172,7 @@ const Header = () => {
           <p>& Orders</p>
         </div>
 
-        <Link to="/cart">
+        <Link to="/amazon-clone/cart">
           <div className="flex cursor-pointer border border-transparent hover:border-white">
             <div className="relative">
               <FiShoppingCart size={35} />

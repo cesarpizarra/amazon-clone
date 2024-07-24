@@ -6,8 +6,8 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/amazon-clone" element={<Home />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route path="/product/:id" element={<ProductDetails />} />
+      <Route path="/amazon-clone/cart" element={<Cart />} />
+      <Route path="/amazon-clone/product/:id" element={<ProductDetails />} />
     </Routes>
   );
 };

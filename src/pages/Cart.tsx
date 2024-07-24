@@ -6,7 +6,7 @@ const Cart = () => {
       <div className="mx-auto min-h-screen w-full max-w-7xl px-4 pt-24">
         <div className="items-center gap-5 bg-white px-5 py-16 md:flex">
           <div>
-            <img src="/cart-image.svg" alt="" className="w-60" />
+            <img src="/amazon-clone/cart-image.svg" alt="" className="w-60" />
           </div>
 
           <div>

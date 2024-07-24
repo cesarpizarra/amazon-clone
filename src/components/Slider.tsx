@@ -27,7 +27,7 @@ const Slider: React.FC<SliderProps> = ({ image, id }) => {
     <div className="flex-shrink-0 p-2">
       <div className="relative cursor-pointer">
         {!showImage && <LoadingSpinner />}
-        <Link to={`/product/${id}`}>
+        <Link to={`/amazon-clone/product/${id}`}>
           <img
             src={image}
             alt="Slider image"
