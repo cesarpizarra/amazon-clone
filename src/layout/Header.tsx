@@ -45,6 +45,7 @@ const Header = () => {
       alertModal();
     } else {
       navigate(path);
+      setIsOpen(!isOpen);
     }
   };
 
@@ -278,6 +279,24 @@ const Header = () => {
             <IoMdClose size={30} />
           </span>
         </div>
+
+        <li className="border-b border-gray-300 py-8">
+          <span className="px-8 text-sm font-bold lg:text-lg">All</span>
+          <ul className="overflow-y-auto">
+            <li
+              onClick={() => handleNavigate("/amazon-clone/todays-deals")}
+              className="cursor-pointer px-8 py-4 font-sans text-sm font-semibold text-gray-500 hover:bg-gray-100"
+            >
+              Today's Deals
+            </li>
+            <li
+              onClick={() => handleNavigate("/amazon-clone/customer-service")}
+              className="cursor-pointer px-8 py-4 font-sans text-sm font-semibold text-gray-500 hover:bg-gray-100"
+            >
+              Customer Service
+            </li>
+          </ul>
+        </li>
         {navLinks.map((link, index) => (
           <li
             key={index}
