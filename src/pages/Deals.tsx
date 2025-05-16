@@ -13,7 +13,9 @@ const Deals = () => {
         const response = await getProducts();
         setTimeout(() => {
           setIsLoading(false);
-          setProducts(response.filter((product: any) => product.rating >= 4.0));
+          setProducts(
+            response.filter((product: ProductDetails) => product.rating >= 4.0),
+          );
         }, 1000);
       } catch (error) {
         console.error(error);
