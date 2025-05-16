@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { getProducts } from "../../service";
 import { Product } from "../../types/product";
 import {
   fashiotItems,
@@ -7,49 +6,47 @@ import {
   gamingAccesories,
   refreshItems,
 } from "../../constant/products";
-import Card1 from "../cards/Card1";
-import Card2 from "../cards/Card2";
+import ProductCard from "../cards/ProductCard";
 import Slider from "../Slider";
+import { getProductsByCategory } from "../../service";
+
+const categoryMap = {
+  phones: "smartphones",
+  laptops: "laptops",
+  mens: "mens-shirts",
+  womens: "womens-dresses",
+  beauty: "beauty",
+  kitchen: "kitchen-accessories",
+};
 
 const Products = () => {
-  const [laptops, setLaptops] = useState<Product[]>([]);
-  const [phones, setPhones] = useState<Product[]>([]);
-  const [mens, setMens] = useState<Product[]>([]);
-  const [womens, setWomens] = useState<Product[]>([]);
-  const [beauty, setBeauty] = useState<Product[]>([]);
-  const [kitchen, setKetchen] = useState<Product[]>([]);
+  const [products, setProducts] = useState<{
+    phones: Product[];
+    laptops: Product[];
+    mens: Product[];
+    womens: Product[];
+    beauty: Product[];
+    kitchen: Product[];
+  }>({
+    phones: [],
+    laptops: [],
+    mens: [],
+    womens: [],
+    beauty: [],
+    kitchen: [],
+  });
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await getProducts();
-        setLaptops(
-          response.filter((product: any) => product.category === "laptops"),
-        );
-        setPhones(
-          response.filter((product: any) => product.category === "smartphones"),
-        );
-        setMens(
-          response.filter((product: any) => product.category === "mens-shirts"),
-        );
-        setWomens(
-          response.filter(
-            (product: any) => product.category === "womens-dresses",
-          ),
-        );
-        setBeauty(
-          response.filter((product: any) => product.category === "beauty"),
-        );
-        setKetchen(
-          response.filter(
-            (product: any) => product.category === "kitchen-accessories",
-          ),
-        );
-      } catch (error) {
-        console.error(error);
-      }
+    const fetchAll = async () => {
+      const results = await Promise.all(
+        Object.entries(categoryMap).map(async ([key, category]) => {
+          const items = await getProductsByCategory(category);
+          return [key, items];
+        }),
+      );
+      setProducts(Object.fromEntries(results));
     };
 
-    fetchProducts();
+    fetchAll();
   }, []);
   return (
     <div>
@@ -58,7 +55,11 @@ const Products = () => {
           <h1 className="text-sm font-bold md:text-lg">Gaming Accessories</h1>
           <div className="grid grid-cols-2 gap-4 pb-12">
             {gamingAccesories.map((product, index) => (
-              <Card1 key={index} name={product.name} image={product.image} />
+              <ProductCard
+                key={index}
+                name={product.name}
+                image={product.image}
+              />
             ))}
           </div>
           <div className="mt-auto w-full cursor-pointer text-sm font-semibold text-[#007185] hover:text-orange-500">
@@ -86,7 +87,11 @@ const Products = () => {
           </h1>
           <div className="grid grid-cols-2 gap-4 pb-12">
             {fashiotItems.map((product, index) => (
-              <Card1 key={index} name={product.name} image={product.image} />
+              <ProductCard
+                key={index}
+                name={product.name}
+                image={product.image}
+              />
             ))}
           </div>
           <div className="mt-auto w-full cursor-pointer text-sm font-semibold text-[#007185] hover:text-orange-500">
@@ -98,7 +103,11 @@ const Products = () => {
           <h1 className="text-sm font-bold md:text-lg">Refresh your space</h1>
           <div className="grid grid-cols-2 gap-4 pb-12">
             {refreshItems.map((product, index) => (
-              <Card1 key={index} name={product.name} image={product.image} />
+              <ProductCard
+                key={index}
+                name={product.name}
+                image={product.image}
+              />
             ))}
           </div>
           <div className="mt-auto w-full cursor-pointer text-sm font-semibold text-[#007185] hover:text-orange-500">
@@ -123,7 +132,11 @@ const Products = () => {
           />
           <div className="mt-2 grid grid-cols-3 gap-2 pb-12">
             {gadgetStore.map((product, index) => (
-              <Card2 key={index} name={product.name} image={product.image} />
+              <ProductCard
+                key={index}
+                name={product.name}
+                image={product.image}
+              />
             ))}
           </div>
           <div className="mt-auto w-full cursor-pointer text-sm font-semibold text-[#007185] hover:text-orange-500">
@@ -150,7 +163,7 @@ const Products = () => {
       <div className="mt-8 bg-white p-4">
         <h1 className="text-xl font-bold">Smart Phones</h1>
         <div className="flex w-full snap-x snap-mandatory items-center gap-4 overflow-x-auto">
-          {phones.map((item, index) => (
+          {products.phones.map((item, index) => (
             <Slider
               key={index}
               image={item.images[0]}
@@ -163,7 +176,7 @@ const Products = () => {
       <div className="mt-8 bg-white p-4">
         <h1 className="text-xl font-bold">Laptops</h1>
         <div className="flex w-full snap-x snap-mandatory items-center gap-4 overflow-x-auto">
-          {laptops.map((item, index) => (
+          {products.laptops.map((item, index) => (
             <Slider
               key={index}
               image={item.images[0]}
@@ -175,7 +188,7 @@ const Products = () => {
       <div className="mt-8 bg-white p-4">
         <h1 className="text-xl font-bold">Women's Clothing</h1>
         <div className="flex w-full snap-x snap-mandatory items-center gap-4 overflow-x-auto">
-          {womens.map((item, index) => (
+          {products.womens.map((item, index) => (
             <Slider
               key={index}
               image={item.images[0]}
@@ -187,7 +200,7 @@ const Products = () => {
       <div className="mt-8 bg-white p-4">
         <h1 className="text-xl font-bold">Men's Clothing</h1>
         <div className="flex w-full snap-x snap-mandatory items-center gap-4 overflow-x-auto">
-          {mens.map((item, index) => (
+          {products.mens.map((item, index) => (
             <Slider
               key={index}
               image={item.images[0]}
@@ -200,7 +213,7 @@ const Products = () => {
       <div className="mt-8 bg-white p-4">
         <h1 className="text-xl font-bold">Women's Clothing</h1>
         <div className="flex w-full snap-x snap-mandatory items-center gap-4 overflow-x-auto">
-          {beauty.map((item, index) => (
+          {products.beauty.map((item, index) => (
             <Slider
               key={index}
               image={item.images[0]}
@@ -213,7 +226,7 @@ const Products = () => {
       <div className="mt-8 bg-white p-4">
         <h1 className="text-xl font-bold">Kitchen Accessories</h1>
         <div className="flex w-full snap-x snap-mandatory items-center gap-4 overflow-x-auto">
-          {kitchen.map((item, index) => (
+          {products.kitchen.map((item, index) => (
             <Slider
               key={index}
               image={item.images[0]}

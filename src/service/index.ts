@@ -9,6 +9,16 @@ export const getProducts = async () => {
   }
 };
 
+export const getProductsByCategory = async (category: string) => {
+  try {
+    const response = await axios.get(`${apiUrl}/category/${category}`);
+    return response.data.products;
+  } catch (error) {
+    console.error(`Error fetching category ${category}:`, error);
+    return [];
+  }
+};
+
 export const getProductId = async (id: any) => {
   try {
     const response = await axios.get(`${apiUrl}/${id}`);
