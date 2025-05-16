@@ -1,9 +1,9 @@
-interface Card1Props {
+interface ProductCardProps {
   name: string;
   image: string;
 }
 
-const Card1: React.FC<Card1Props> = ({ name, image }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ name, image }) => {
   return (
     <div>
       <div className="cursor-pointer">
@@ -14,4 +14,4 @@ const Card1: React.FC<Card1Props> = ({ name, image }) => {
   );
 };
 
-export default Card1;
+export default ProductCard;
